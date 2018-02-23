@@ -15,7 +15,10 @@
 */-->
 <p data-sly-test="${properties.text}">Text property: ${properties.text}</p>
 
-<pre data-sly-use.hello="io.cone.aem.core.models.HelloWorldModel">
-HelloWorldModel says:
-${hello.message}
+<pre data-sly-use.hello="io.cone.aem.core.models.HelloWorldModel"
+     data-sly-use.custom="io.cone.aem.core.pojos.CustomServiceConsumerPojo">
+    HelloWorldModel says:
+    ${hello.message}
+    CustomServiceConsumerModel says:
+    ${custom.message}
 </pre>
