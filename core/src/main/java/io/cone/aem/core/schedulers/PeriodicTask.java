@@ -1,6 +1,7 @@
 package io.cone.aem.core.schedulers;
 
 import io.cone.aem.core.listeners.CustomEvents;
+import org.apache.sling.event.jobs.JobManager;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.event.Event;
@@ -21,8 +22,13 @@ import java.util.HashMap;
 public class PeriodicTask implements Runnable {
   private final Logger logger = LoggerFactory.getLogger(getClass());
 
+  // For event handlers
   @Reference
   private EventAdmin eventAdmin;
+
+  // For Jobs
+  @Reference
+  private JobManager jobManager;
 
   @Override
   public void run() {
@@ -31,6 +37,7 @@ public class PeriodicTask implements Runnable {
     /*
     logger.info("PeriodicTask running every 30 seconds");
     fireCompletionEvent();
+    startJob();
     */
   }
 
@@ -39,9 +46,19 @@ public class PeriodicTask implements Runnable {
     Event event = new Event(CustomEvents.CUSTOM_EVENT_COMPLETE, new HashMap<String, Object>() {
       private static final long serialVersionUID = 1L;
       {
-        put("message", "Hello World");
+        put("message", "Hello World from an event handler");
       }
     });
     eventAdmin.postEvent(event);
+  }
+
+  private void startJob() {
+    // Shows functionality of io.cone.aem.core.listeners.SimpleJob
+    jobManager.addJob(CustomEvents.CUSTOM_JOB_COMPLETE, new HashMap<String, Object>() {
+      private static final long serialVersionUID = 1L;
+      {
+        put("message", "Hello World from a job");
+      }
+    });
   }
 }
