@@ -22,6 +22,7 @@ import javax.inject.Named;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Default;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.Optional;
 import org.apache.sling.settings.SlingSettingsService;
 
 @Model(adaptables=Resource.class)
@@ -33,6 +34,9 @@ public class HelloWorldModel {
     @Inject @Named("sling:resourceType") @Default(values="No resourceType")
     protected String resourceType;
 
+    @Inject @Optional
+    private String text;
+
     private String message;
 
     @PostConstruct
@@ -40,6 +44,7 @@ public class HelloWorldModel {
         message = "\tHello World!\n";
         message += "\tThis is instance: " + settings.getSlingId() + "\n";
         message += "\tResource type is: " + resourceType + "\n";
+        message += "\tThe value of the injected 'text' field is: " + text + "\n";
     }
 
     public String getMessage() {
