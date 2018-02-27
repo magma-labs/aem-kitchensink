@@ -32,6 +32,8 @@ import org.slf4j.LoggerFactory;
 @Component(service=Runnable.class)
 public class SimpleScheduledTask implements Runnable {
 
+    // This could reside in a separated file and it's not exclusive of a scheduler, this
+    // dynamic configuration pattern can be used in any service
     @ObjectClassDefinition(name="A scheduled task",
                            description = "Simple demo for cron-job like task with properties")
     public static @interface Config {
