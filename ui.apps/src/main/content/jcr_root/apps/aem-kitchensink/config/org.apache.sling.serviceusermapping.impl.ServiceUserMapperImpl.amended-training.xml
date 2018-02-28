@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    This node create a mapping to be able to access the JCR repository
+    from the package io.cone.aem.core with the sub-service 'training'.
+    First we need to create the user (e.g. 'training-user' in this case)
+    and give it the correct permissions.
+ -->
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    jcr:primaryType="sling:OsgiConfig"
+    service.ranking="{Long}0"
+    user.mapping="io.cone.aem.core:training=training-user"/>
