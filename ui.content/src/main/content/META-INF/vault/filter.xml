@@ -2,4 +2,5 @@
 <workspaceFilter version="1.0">
     <filter root="/content/aem-kitchensink"/>
     <filter root="/content/dam/aem-kitchensink"/>
+    <filter root="/content/parentNode"/>
 </workspaceFilter>
