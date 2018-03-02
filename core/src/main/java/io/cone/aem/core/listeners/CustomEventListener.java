@@ -18,7 +18,6 @@ import org.slf4j.LoggerFactory;
 public class CustomEventListener implements EventHandler {
   private final Logger logger = LoggerFactory.getLogger(getClass());
 
-
   @Override
   public void handleEvent(Event event) {
     String message = (String) event.getProperty("message");
