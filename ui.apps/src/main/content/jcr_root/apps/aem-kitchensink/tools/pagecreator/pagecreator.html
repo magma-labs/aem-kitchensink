@@ -1,0 +1,16 @@
+<h3>Input a comma delimited string for the page to be created</h3>
+<table>
+  <tr>
+    <th>Page Path, </th>
+    <th>Page Title, </th>
+    <th>Page Template, </th>
+    <th>Tag, </th>
+    <th>Auto Publish?</th>
+  </tr>
+</table>
+<br />
+<br />
+<form action="/etc/aem-kitchensink/pagecreator.json" method="POST" enctype="multipart/form-data">
+	<input style="width:60%;" name="importer" type="text" Value="/content/aem-kitchensink/en/community,Our Community,/apps/aem-kitchensink/templates/page-content,/etc/tags/geometrixx-media/events/concerts,TRUE">
+	<input type="submit">
+</form>

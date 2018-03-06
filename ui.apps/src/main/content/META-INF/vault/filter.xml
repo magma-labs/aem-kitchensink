@@ -4,4 +4,5 @@
     <filter root="/apps/sling" />
     <filter root="/etc/designs/aem-kitchensink"/>
     <filter root="/etc/importers/polling/weather_test"/>
+    <filter root="/etc/aem-kitchensink"/>
 </workspaceFilter>
