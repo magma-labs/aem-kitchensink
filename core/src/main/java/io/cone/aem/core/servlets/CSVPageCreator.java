@@ -11,6 +11,7 @@ import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.servlets.HttpConstants;
 import org.apache.sling.api.servlets.SlingAllMethodsServlet;
+import org.apache.sling.commons.json.JSONException;
 import org.apache.sling.commons.json.JSONObject;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
@@ -20,21 +21,21 @@ import org.slf4j.LoggerFactory;
 import javax.jcr.Session;
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
-import java.io.IOException;
+import java.io.*;
 
 /**
  * @author Carlos Gutierrez on 3/6/18
- * Access the page as http://localhost:4502/etc/aem-kitchensink/pagecreator.html
+ * Access the page as http://localhost:4502/etc/aem-kitchensink/pagecreator.csv.html
  */
 @Component(service=Servlet.class,
         property={
                 "sling.servlet.resourceTypes="+ "aem-kitchensink/tools/pagecreator",
-                "sling.servlet.methods=" + HttpConstants.METHOD_POST
+                "sling.servlet.methods=" + HttpConstants.METHOD_POST,
+                "sling.servlet.selectors=csv"
         })
-public class PageCreatorServlet extends SlingAllMethodsServlet {
-  Logger logger = LoggerFactory.getLogger(this.getClass());
-
+public class CSVPageCreator extends SlingAllMethodsServlet {
   private static final long serialVersionUID = 1L;
+  Logger logger = LoggerFactory.getLogger(getClass());
 
   @Reference
   private Replicator replicator;
@@ -47,11 +48,12 @@ public class PageCreatorServlet extends SlingAllMethodsServlet {
     resource = request.getResource();
 
     String param = request.getParameter("importer");
-    String[] newPage = param.split(",");
+    byte[] input = param.getBytes();
+    InputStream stream = new ByteArrayInputStream(input);
     try {
-      resultObject = createTrainingPage(newPage[0], newPage[1], newPage[2], newPage[3], newPage[4]);
-    } catch (Exception e) {
-      logger.error("Failure to create page: " + e, e);
+      resultObject = readCSV(stream);
+    } catch (JSONException e) {
+      logger.error("Failure to Read CSV: " + e);
     }
 
     if(resultObject != null){
@@ -59,6 +61,62 @@ public class PageCreatorServlet extends SlingAllMethodsServlet {
       response.getWriter().print(resultObject.toString());
       response.getWriter().close();
     }
+  }
+
+  private JSONObject readCSV(InputStream stream) throws IOException, JSONException {
+    JSONObject out = new JSONObject();
+    BufferedReader br = new BufferedReader(new InputStreamReader(stream));
+
+    if(br != null){
+      String line;
+      String[] newPage;
+      JSONObject createdPageObject = null;
+      //Read each line of the CSV
+      while ((line = br.readLine()) != null){
+        newPage = line.split(",");
+        String aemTag = null;
+        String publishFlag = null;
+        String aemTemplatePath = null;
+
+        //If the line has a template, tag, publish flag, set those variables
+        if(newPage.length == 5){
+          aemTemplatePath = newPage[2];
+          aemTag = newPage[3];
+          publishFlag = newPage[4];
+        }else if(newPage.length == 4){
+          aemTemplatePath = newPage[2];
+          aemTag = newPage[3];
+        }else if(newPage.length == 3){
+          publishFlag = newPage[2];
+        }
+
+        //As long as there is a path and title, the page can be created
+        if((newPage.length  > 1)
+                && !newPage[0].isEmpty()
+                && !newPage[1].isEmpty()){
+          String path = newPage[0];
+          String title = newPage[1];
+          try {
+            createdPageObject = createTrainingPage(path, title, aemTemplatePath, aemTag, publishFlag);
+          } catch (Exception e) {
+            logger.error(path +" not created successfully: " + e);
+          }
+
+          //add the status of the row into the json array
+          if(createdPageObject != null){
+            out.put(path, createdPageObject); //Print Title of Page
+            createdPageObject = null;
+          }else{
+            out.put(path, new JSONObject().put("Status","Could not create a page"));
+          }
+        }
+        else {
+          out.put(line, new JSONObject().put("Status","Could not properly parce"));
+        }
+      }
+    }
+    br.close();
+    return out;
   }
 
   private JSONObject createTrainingPage(String path, String title, String template, String tag, String publish) throws Exception{
@@ -88,10 +146,9 @@ public class PageCreatorServlet extends SlingAllMethodsServlet {
     if(tag != null && !tag.isEmpty()) {
       //TagManager can be retrieved via adaptTo
       TagManager tm = resource.getResourceResolver().adaptTo(TagManager.class);
-      Resource resource = p.getContentResource();
-      Tag pageTag = tm.resolve(tag);
-      Tag[] tags = new Tag[]{pageTag};
-      tm.setTags(resource, tags,true);
+      tm.setTags(p.getContentResource(),
+              new Tag[]{tm.resolve(tag)},
+              true);
     }
 
     //Publish page if requested
