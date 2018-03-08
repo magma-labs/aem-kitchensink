@@ -1,0 +1,10 @@
+/*.aem-AuthorLayer-Edit,
+.aem-AuthorLayer-Layouting,
+.aem-AuthorLayer-Preview,
+.aem-AuthorLayer-Design,
+.aem-AuthorLayer-Developer,
+.aem-AuthorLayer-Scaffolding*/
+
+.aem-AuthorLayer-Edit .page__header {
+  background-color: #ccc;
+}
