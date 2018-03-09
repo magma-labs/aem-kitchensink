@@ -1,16 +1,10 @@
 (function($, $document) {
   'use strict';
 
-  // AEM wizard can also be modified using categories like:
-  // create page: cq.siteadmin.admin.createpage
-  // edit page: cq.siteadmin.admin.properties
-  // check https://www.slideshare.net/martinischeery/aem-61-user-interface-customisation
-
   var CONTAINER_CLASS = '.conditional-fields-container';
   var CHECKBOX_CLASS = '.conditioner-checkbox';
 
   $document.on('dialog-ready', function() {
-    debugger;
     var $container = $(CONTAINER_CLASS);
 
     if ($container.length <= 0) {

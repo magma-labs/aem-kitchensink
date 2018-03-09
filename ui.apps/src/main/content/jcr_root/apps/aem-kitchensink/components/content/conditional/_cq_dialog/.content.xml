@@ -18,18 +18,18 @@
                     <text
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/foundation/form/textfield"
-                        fieldLabel="Text"
                         class="conditional-text-field"
+                        fieldLabel="Text"
                         name="./text"/>
                     <show
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/foundation/form/checkbox"
-                            defaultChecked="{Boolean}true"
-                            uncheckedValue="{Boolean}false"
-                            value="{Boolean}true"
-                            text="Show fields"
-                            class="conditioner-checkbox"
-                            name="./show"/>
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/form/checkbox"
+                        class="conditioner-checkbox"
+                        defaultChecked="{Boolean}true"
+                        name="./show"
+                        text="Show fields"
+                        uncheckedValue="{Boolean}false"
+                        value="{Boolean}true"/>
                 </items>
             </column>
         </items>

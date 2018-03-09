@@ -1,54 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
-          jcr:primaryType="cq:EditConfig">
-  <cq:inplaceEditing
-          jcr:primaryType="cq:InplaceEditingConfig"
-          active="{Boolean}true"
-          editorType="text">
-    <config
-            jcr:primaryType="nt:unstructured">
-      <rtePlugins jcr:primaryType="nt:unstructured">
-        <paraformat
-                jcr:primaryType="nt:unstructured"
-                features="*">
-          <formats jcr:primaryType="cq:WidgetCollection">
-            <p tag="p" description="p" jcr:primaryType="nt:unstructured" />
-            <h1 tag="h1" description="h1" jcr:primaryType="nt:unstructured" />
-            <h2 tag="h2" description="h2" jcr:primaryType="nt:unstructured" />
-            <h3 tag="h3" description="h3" jcr:primaryType="nt:unstructured" />
-            <h4 tag="h4" description="h4" jcr:primaryType="nt:unstructured" />
-            <h5 tag="h5" description="h5" jcr:primaryType="nt:unstructured" />
-            <h6 tag="h6" description="h6" jcr:primaryType="nt:unstructured" />
-          </formats>
-        </paraformat>
-        <text-formatting
-                jcr:primaryType="nt:unstructured"
-                features="*" />
-        <styles
-                jcr:primaryType="nt:unstructured"
-                features="*" >
-          <styles jcr:primaryType="cq:WidgetCollection">
-            <uppercase
+    jcr:primaryType="cq:EditConfig">
+    <cq:inplaceEditing
+        jcr:primaryType="cq:InplaceEditingConfig"
+        active="{Boolean}true"
+        editorType="text">
+        <config jcr:primaryType="nt:unstructured">
+            <rtePlugins jcr:primaryType="nt:unstructured">
+                <paraformat
                     jcr:primaryType="nt:unstructured"
-                    cssName="tt-uc"
-                    text="Uppercase" />
-            <text-indent
+                    features="*">
+                    <formats jcr:primaryType="cq:WidgetCollection">
+                        <p
+                            jcr:primaryType="nt:unstructured"
+                            description="p"
+                            tag="p"/>
+                        <h1
+                            jcr:primaryType="nt:unstructured"
+                            description="h1"
+                            tag="h1"/>
+                        <h2
+                            jcr:primaryType="nt:unstructured"
+                            description="h2"
+                            tag="h2"/>
+                        <h3
+                            jcr:primaryType="nt:unstructured"
+                            description="h3"
+                            tag="h3"/>
+                        <h4
+                            jcr:primaryType="nt:unstructured"
+                            description="h4"
+                            tag="h4"/>
+                        <h5
+                            jcr:primaryType="nt:unstructured"
+                            description="h5"
+                            tag="h5"/>
+                        <h6
+                            jcr:primaryType="nt:unstructured"
+                            description="h6"
+                            tag="h6"/>
+                    </formats>
+                </paraformat>
+                <text-formatting
                     jcr:primaryType="nt:unstructured"
-                    cssName="ti50 dis-ib"
-                    text="Text Indent" />
-            <bg-blue
+                    features="*"/>
+                <styles
                     jcr:primaryType="nt:unstructured"
-                    cssName="background-gopro c-wht p5 bdr-2"
-                    text="Blue Background" />
-          </styles>
-        </styles>
-        <findreplace jcr:primaryType="nt:unstructured"
-                     features="*" />
-        <table jcr:primaryType="nt:unstructured"
-               features="*" />
-        <misctools jcr:primaryType="nt:unstructured"
-               features="*" />
-      </rtePlugins>
-    </config>
-  </cq:inplaceEditing>
+                    features="*">
+                    <styles jcr:primaryType="cq:WidgetCollection">
+                        <uppercase
+                            jcr:primaryType="nt:unstructured"
+                            cssName="tt-uc"
+                            text="Uppercase"/>
+                        <text-indent
+                            jcr:primaryType="nt:unstructured"
+                            cssName="ti50 dis-ib"
+                            text="Text Indent"/>
+                        <bg-blue
+                            jcr:primaryType="nt:unstructured"
+                            cssName="background-gopro c-wht p5 bdr-2"
+                            text="Blue Background"/>
+                    </styles>
+                </styles>
+                <findreplace
+                    jcr:primaryType="nt:unstructured"
+                    features="*"/>
+                <table
+                    jcr:primaryType="nt:unstructured"
+                    features="*"/>
+                <misctools
+                    jcr:primaryType="nt:unstructured"
+                    features="*"/>
+            </rtePlugins>
+        </config>
+    </cq:inplaceEditing>
 </jcr:root>

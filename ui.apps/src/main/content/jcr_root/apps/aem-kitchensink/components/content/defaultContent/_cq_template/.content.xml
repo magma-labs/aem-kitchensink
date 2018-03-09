@@ -8,12 +8,12 @@
         text="&lt;p>lorem ipsum&lt;/p>&#xa;"
         textIsRich="true"/>
     <par
-            jcr:primaryType="nt:unstructured"
-            sling:resourceType="wcm/foundation/components/parsys">
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="wcm/foundation/components/parsys">
         <textComp2
-                jcr:primaryType="nt:unstructured"
-                sling:resourceType="aem-kitchensink/components/content/text"
-                text="&lt;p>lorem ipsum&lt;/p>&#xa;"
-                textIsRich="true"/>
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="aem-kitchensink/components/content/text"
+            text="&lt;p>lorem ipsum&lt;/p>&#xa;"
+            textIsRich="true"/>
     </par>
 </jcr:root>
