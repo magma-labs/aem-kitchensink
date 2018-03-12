@@ -1,0 +1,15 @@
+.gp-multifield-full-width {
+  width: 100% !important;
+  background-color: #525252 !important;
+}
+
+.gp-multifield-field .coral-Form-fieldset-legend {
+  margin-top: 0 !important;
+}
+
+.gp-multifield-field {
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid #2a2a2a !important;
+  background-color: #484848 !important;
+}

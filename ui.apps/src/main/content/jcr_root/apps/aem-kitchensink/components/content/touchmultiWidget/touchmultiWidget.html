@@ -1,0 +1,9 @@
+<div data-sly-use.model="io.cone.aem.core.models.TouchMultiWidgetModel">
+  <h3 data-sly-test="${properties.name}">Site name: ${properties.name}</h3>
+  <ul data-sly-test.hasData="${model.items}" data-sly-list="${model.items}">
+    <li>
+      Page name: ${item.page}, page path: ${item.path}
+    </li>
+  </ul>
+  <h3 data-sly-test="${!hasData}">No data available.</h3>
+</div>
