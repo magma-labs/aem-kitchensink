@@ -36,6 +36,8 @@ The project's base structure was built with [aem-project-archetype](https://gith
 * Example of a [design dialog for the color text component](https://github.com/magma-labs/aem-kitchensink/commit/a1c5ffe367a4efba45480b67c369b861ee68d6ef).
 * Example of how to use a [service configuration factory](https://github.com/magma-labs/aem-kitchensink/commit/a05f2bd8a3d1015516b3aa2cb8f0a21a09459c02).
 * Example of how to [inject a service in a Sling Model](https://github.com/magma-labs/aem-kitchensink/commit/d37bea84c43b473bf0da68a58eafba467325a3ab).
+* Example of how to use a [Sling Model as a datasource](https://github.com/magma-labs/aem-kitchensink/commit/23dbc403f719ea7ce37ef162bfb2d2225793149c) for a dropdown in an edit dialog.
+* Example of [Sling Mappings](https://github.com/magma-labs/aem-kitchensink/commit/3b39b7cc1b8f749a70101ac59f6c7b1f854da66d).
 
 ## Modules
 
