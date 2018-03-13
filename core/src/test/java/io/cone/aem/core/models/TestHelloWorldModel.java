@@ -20,8 +20,11 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
+import io.cone.aem.core.custom.ConfigurationFactoryService;
 import junitx.util.PrivateAccessor;
 
 import org.apache.sling.settings.SlingSettingsService;
@@ -44,8 +47,13 @@ public class TestHelloWorldModel {
         slingId = UUID.randomUUID().toString();
         when(settings.getSlingId()).thenReturn(slingId);
 
+        ConfigurationFactoryService fakeService = mock(ConfigurationFactoryService.class);
+        List<ConfigurationFactoryService> services = new ArrayList<>();
+        services.add(fakeService);
+
         hello = new HelloWorldModel();
         PrivateAccessor.setField(hello, "settings", settings);
+        PrivateAccessor.setField(hello, "services", services);
         hello.init();
     }
     

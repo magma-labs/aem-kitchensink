@@ -14,7 +14,7 @@ public class CustomServiceConsumerPojo extends WCMUsePojo {
     /*
      * Neither @Reference nor @Inject annotations work for
      * getting a service instance in
-     * Sling Models and classes extending WCMUsePojo
+     * classes extending WCMUsePojo. @Inject works for Sling Models
      */
     customService = getSlingScriptHelper().getService(CustomService.class);
   }
