@@ -20,6 +20,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import io.cone.aem.core.custom.ConfigurationFactoryService;
+import io.cone.aem.core.custom.CustomService;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Default;
 import org.apache.sling.models.annotations.Model;
@@ -37,6 +38,9 @@ public class HelloWorldModel {
     @Inject
     private List<ConfigurationFactoryService> services;
 
+    @Inject
+    private CustomService customService;
+
     @Inject @Named("sling:resourceType") @Default(values="No resourceType")
     protected String resourceType;
 
@@ -51,6 +55,7 @@ public class HelloWorldModel {
         message += "\tThis is instance: " + settings.getSlingId() + "\n";
         message += "\tResource type is: " + resourceType + "\n";
         message += "\tThe value of the injected 'text' field is: " + text + "\n";
+        message += "\tCustom service says: " + customService.getMessage() + "\n";
 
         for (ConfigurationFactoryService service : services) {
             message += "\tThe service " + service.hashCode() + " says: " + service.sayHello() + "\n";

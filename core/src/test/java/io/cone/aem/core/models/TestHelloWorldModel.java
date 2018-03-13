@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.UUID;
 
 import io.cone.aem.core.custom.ConfigurationFactoryService;
+import io.cone.aem.core.custom.CustomService;
 import junitx.util.PrivateAccessor;
 
 import org.apache.sling.settings.SlingSettingsService;
@@ -51,9 +52,12 @@ public class TestHelloWorldModel {
         List<ConfigurationFactoryService> services = new ArrayList<>();
         services.add(fakeService);
 
+        CustomService custom = mock(CustomService.class);
+
         hello = new HelloWorldModel();
         PrivateAccessor.setField(hello, "settings", settings);
         PrivateAccessor.setField(hello, "services", services);
+        PrivateAccessor.setField(hello, "customService", custom);
         hello.init();
     }
     
