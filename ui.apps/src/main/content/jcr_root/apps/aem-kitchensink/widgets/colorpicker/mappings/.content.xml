@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+          jcr:primaryType="sling:Folder">
+  <black
+          jcr:primaryType="nt:unstructured"
+          name="Black"
+          value="#000000"/>
+  <asphalt
+          jcr:primaryType="nt:unstructured"
+          name="Asphalt"
+          value="#141414"/>
+  <gripTape
+          jcr:primaryType="nt:unstructured"
+          name="Grip Tape"
+          value="#222222"/>
+  <tire
+          jcr:primaryType="nt:unstructured"
+          name="Tire"
+          value="#353535"/>
+  <gunMetal
+          jcr:primaryType="nt:unstructured"
+          name="Gun Metal"
+          value="#666666"/>
+  <concrete
+          jcr:primaryType="nt:unstructured"
+          name="Concrete"
+          value="#a4a5a5"/>
+  <silver
+          jcr:primaryType="nt:unstructured"
+          name="Silver"
+          value="#d8d8d8"/>
+  <glacier
+          jcr:primaryType="nt:unstructured"
+          name="Glacier"
+          value="#f3f4f4"/>
+  <snow
+          jcr:primaryType="nt:unstructured"
+          name="Snow"
+          value="#f9f9f9"/>
+  <white
+          jcr:primaryType="nt:unstructured"
+          name="White"
+          value="#ffffff"/>
+  <gopro
+          jcr:primaryType="nt:unstructured"
+          name="GoPro"
+          value="#009fdf"/>
+  <pacific
+          jcr:primaryType="nt:unstructured"
+          name="Pacific"
+          value="#03bffe"/>
+  <atlantic
+          jcr:primaryType="nt:unstructured"
+          name="Atlantic"
+          value="#017faa"/>
+  <hardHat
+          jcr:primaryType="nt:unstructured"
+          name="Hard Hat"
+          value="#f5a700"/>
+  <finishLine
+          jcr:primaryType="nt:unstructured"
+          name="Finish Line"
+          value="#7ed321"/>
+  <blood
+          jcr:primaryType="nt:unstructured"
+          name="Blood"
+          value="#f7403d"/>
+</jcr:root>
