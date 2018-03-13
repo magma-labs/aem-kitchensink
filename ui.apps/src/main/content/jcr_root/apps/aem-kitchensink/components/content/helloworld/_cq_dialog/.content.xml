@@ -19,6 +19,15 @@
                         sling:resourceType="granite/ui/components/foundation/form/textfield"
                         fieldLabel="Text"
                         name="./text"/>
+                    <dropdown
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/foundation/form/select"
+                            fieldLabel="Options from Sling Model Datasource"
+                            name="./option">
+                        <datasource
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="aem-kitchensink/components/content/datasources/mylist"/>
+                    </dropdown>
                 </items>
             </column>
         </items>
